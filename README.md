@@ -10,7 +10,7 @@
 
 输入主题、网址或材料，选择对应 Skill 开始整理；通过 Agent 运行中心查看进度，生成的候选素材经 Inbox 审核后再入库。
 
-![素材工作台：材料输入、专题素材库与 Agent 运行中心](docs/images/materials-workbench.png)
+![素材工作台：材料输入、专题素材库与 Agent 运行中心](docs/images/materials-workbench-public.png)
 
 ### 申论训练闭环
 

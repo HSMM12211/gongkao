@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "gongkao-smoke-test-skill",
+  "name": "gongkao-smoke-test-skill",
+  "displayName": "Skill 运行冒烟测试",
+  "description": "用最小结构化输出验证 Skill 发现、隔离工作区、CLI 调用和 material-draft.json 读取是否贯通。",
+  "scenario": "运行自检",
+  "source": "built-in",
+  "trust": "trusted",
+  "enabled": true,
+  "inputs": [
+    {
+      "name": "topic",
+      "label": "测试主题",
+      "type": "string",
+      "required": true,
+      "default": "Skill Runtime Smoke Test",
+      "placeholder": "例如：素材 Skill 链路自检"
+    }
+  ],
+  "outputs": ["结构化素材", "运行报告", "字帖摘抄"],
+  "requiredCapabilities": ["fileRead", "fileWrite", "structuredOutput"],
+  "requiredPermissions": ["promptInject", "fileRead", "fileWrite"]
+}

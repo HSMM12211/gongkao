@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "申论 AI 智能修炼",
+  "version": "0.1.0",
+  "identifier": "com.gongkao.shenlun",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "frontendDist": "../out"
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "resources": ["../skills/**/*"]
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "申论 AI 智能修炼",
+        "width": 1280,
+        "height": 860,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "capabilities": ["default"]
+    }
+  }
+}

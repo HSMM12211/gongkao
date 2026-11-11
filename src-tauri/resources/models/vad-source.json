@@ -1,0 +1,15 @@
+{
+  "defaultVadId": "silero-vad-v4",
+  "models": [
+    {
+      "id": "silero-vad-v4",
+      "label": "Silero VAD v4",
+      "filename": "silero_vad_v4.onnx",
+      "sizeBytes": 1807522,
+      "sampleRate": 16000,
+      "frameMs": 30,
+      "bundled": true,
+      "source": "docs/Handy-main/src-tauri/resources/models/silero_vad_v4.onnx"
+    }
+  ]
+}

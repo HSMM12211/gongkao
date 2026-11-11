@@ -1,0 +1,273 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-noto-sans-sc: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-noto-serif-sc: 'SimSun', '宋体', serif;
+
+  /* 政务红 / 暗墨绿 / 冷灰底 */
+  --background: oklch(0.985 0.002 250); /* #FAFAFA 冷灰 */
+  --foreground: oklch(0.18 0.01 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 250);
+
+  /* 政务红 #8C0000 */
+  --primary: oklch(0.39 0.16 25);
+  --primary-foreground: oklch(0.99 0.005 80);
+
+  /* 暗墨绿 #004D40 */
+  --secondary: oklch(0.36 0.06 175);
+  --secondary-foreground: oklch(0.99 0.005 80);
+
+  --muted: oklch(0.95 0.003 250);
+  --muted-foreground: oklch(0.45 0.01 250);
+
+  --accent: oklch(0.92 0.02 25);
+  --accent-foreground: oklch(0.39 0.16 25);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0.005 80);
+
+  --border: oklch(0.9 0.005 250);
+  --input: oklch(0.9 0.005 250);
+  --ring: oklch(0.39 0.16 25);
+
+  --chart-1: oklch(0.39 0.16 25);   /* 政务红 */
+  --chart-2: oklch(0.36 0.06 175);  /* 暗墨绿 */
+  --chart-3: oklch(0.65 0.12 50);   /* 暖金 */
+  --chart-4: oklch(0.55 0.04 250);  /* 中灰蓝 */
+  --chart-5: oklch(0.75 0.08 175);  /* 浅墨绿 */
+
+  --radius: 0.5rem;
+
+  --sidebar: oklch(0.22 0.02 25);
+  --sidebar-foreground: oklch(0.95 0.005 80);
+  --sidebar-primary: oklch(0.39 0.16 25);
+  --sidebar-primary-foreground: oklch(0.99 0.005 80);
+  --sidebar-accent: oklch(0.3 0.04 25);
+  --sidebar-accent-foreground: oklch(0.99 0.005 80);
+  --sidebar-border: oklch(0.3 0.02 25);
+  --sidebar-ring: oklch(0.39 0.16 25);
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans-sc), 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: var(--font-noto-serif-sc), 'SimSun', '宋体', serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 专注 Buff 特效 */
+@keyframes focus-buff {
+  0% { box-shadow: 0 0 0 0 rgba(140, 0, 0, 0.6); }
+  70% { box-shadow: 0 0 0 18px rgba(140, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(140, 0, 0, 0); }
+}
+.focus-buff-glow {
+  animation: focus-buff 1.6s ease-out infinite;
+}
+
+/* 错误闪烁 */
+@keyframes shake-red {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); background-color: oklch(0.7 0.2 25); }
+  75% { transform: translateX(4px); background-color: oklch(0.7 0.2 25); }
+}
+.shake-red {
+  animation: shake-red 0.3s ease-in-out;
+}
+
+/* 声波 */
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.wave-bar {
+  animation: wave 0.9s ease-in-out infinite;
+}
+
+/* 3D 翻转卡片 */
+.card-3d-container { perspective: 1500px; }
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+}
+.card-3d.flipped { transform: rotateY(180deg); }
+.card-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-back { transform: rotateY(180deg); }
+
+/* ============== 字帖打印级样式 ============== */
+.copybook-page {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 15mm 12mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'SimSun', '宋体', serif;
+  page-break-after: always;
+}
+
+.copybook-page .header-banner {
+  border-bottom: 2px solid #8c0000;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+.copybook-page .title-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.copybook-page .doc-title {
+  font-size: 18pt; font-weight: bold; color: #8c0000;
+  font-family: 'SimSun', '宋体', serif; margin: 0;
+}
+.copybook-page .meta-info { font-size: 9pt; color: #666; }
+
+.copybook-page .section-title {
+  font-size: 11pt; color: #004D40; font-weight: bold;
+  margin: 10px 0 6px; padding-left: 6px;
+  border-left: 3px solid #004D40;
+}
+.copybook-page .question-box {
+  font-size: 10pt; line-height: 1.6;
+  background: #faf3f3; padding: 8px 10px;
+  border: 1px dashed #f0a0a0;
+}
+
+/* 20 列方格 */
+.copybook-page .grid-container {
+  margin-top: 10px;
+  border-top: 1px solid #f09999;
+  border-left: 1px solid #f09999;
+  display: block;
+  page-break-inside: avoid;
+}
+.copybook-page .grid-row { display: table; width: 100%; table-layout: fixed; }
+.copybook-page .grid-cell {
+  display: table-cell;
+  width: 5%;
+  height: 11mm;
+  border-right: 1px solid #f09999;
+  border-bottom: 1px solid #f09999;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23ffcccc" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23ffcccc" stroke-dasharray="2,2"/></svg>');
+}
+.copybook-page .grid-cell.empty-cell {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23ffe5e5" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23ffe5e5" stroke-dasharray="2,2"/></svg>');
+}
+
+/* 格子主题：考场红格(默认) / 防疲劳绿格 / 质感灰格 */
+.copybook-page.theme-green .grid-container { border-color: #9fc5b8; border-top-color: #9fc5b8; border-left-color: #9fc5b8; }
+.copybook-page.theme-green .grid-cell { border-color: #9fc5b8;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23bcd9cf" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23bcd9cf" stroke-dasharray="2,2"/></svg>');
+}
+.copybook-page.theme-green .grid-cell.empty-cell {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23dcebe4" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23dcebe4" stroke-dasharray="2,2"/></svg>');
+}
+
+.copybook-page.theme-gray .grid-container { border-color: #c0c0c0; border-top-color: #c0c0c0; border-left-color: #c0c0c0; }
+.copybook-page.theme-gray .grid-cell { border-color: #c0c0c0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23d4d4d4" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23d4d4d4" stroke-dasharray="2,2"/></svg>');
+}
+.copybook-page.theme-gray .grid-cell.empty-cell {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="50%25" x2="100%25" y2="50%25" stroke="%23ebebeb" stroke-dasharray="2,2"/><line x1="50%25" y1="0" x2="50%25" y2="100%25" stroke="%23ebebeb" stroke-dasharray="2,2"/></svg>');
+}
+
+.copybook-page .trace-text {
+  font-size: 22pt;
+  color: #b3b3b3;
+  font-family: 'STKaiti', 'Kaiti SC', '楷体', serif;
+  line-height: 11mm;
+  font-weight: normal;
+  opacity: 0.6;
+}
+.copybook-page.font-xingkai .trace-text {
+  font-family: 'STXingkai', '行楷', 'STKaiti', 'Kaiti SC', '楷体', cursive;
+}
+.copybook-page.font-kai .trace-text {
+  font-family: 'STKaiti', 'Kaiti SC', '楷体', serif;
+}
+.copybook-page.font-zhengkai .trace-text {
+  font-family: 'LXGW ZhenKai', 'LXGW ZhenKai GB', '霞鹜臻楷', '霞鹜臻楷 GB', 'SimKai', '楷体', 'STKaiti', serif;
+}
+.copybook-page.font-wenkai .trace-text {
+  font-family: 'LXGW WenKai GB', 'LXGW WenKai', '霞鹜文楷 GB', '霞鹜文楷', 'STKaiti', 'Kaiti SC', '楷体', serif;
+}
+
+/* 屏幕预览缩放容器 */
+.copybook-preview-scaler {
+  transform-origin: top left;
+}
+
+/* 打印模式 */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area {
+    position: absolute; left: 0; top: 0; width: 100%;
+  }
+  .copybook-page {
+    margin: 0; box-shadow: none !important;
+  }
+}

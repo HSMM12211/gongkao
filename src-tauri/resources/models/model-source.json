@@ -1,0 +1,14 @@
+{
+  "defaultModelId": "whisper-small-ggml",
+  "models": [
+    {
+      "id": "whisper-small-ggml",
+      "label": "Whisper Small 中文离线模型",
+      "filename": "ggml-small.bin",
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin",
+      "sizeBytes": 487601967,
+      "language": "zh",
+      "bundled": true
+    }
+  ]
+}

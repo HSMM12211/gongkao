@@ -21,6 +21,7 @@ The goal is not to stop vibe coding. The goal is to make the output repeatable, 
 
 | Pitfall | What Happened / Risk | Guard Now In Place |
 | --- | --- | --- |
+| Personal paths in public screenshots | A README screenshot exposed the local CLI installation path, including the OS username. | Capture public images with local paths hidden or masked, inspect every image for usernames, paths, credentials and account details before staging, and check Git history separately when replacing a published image. |
 | Prompt-only implementation drift | Free-form AI changes can produce UI and data-flow changes that are hard to explain later. | Each active feature must point to a `specs/*/plan.md` from `AGENTS.md`. |
 | Frontend output without acceptance rules | UI can look plausible while missing empty, loading, error, review, or long-run states. | `specs/006-materials-chat-streaming-ui/plan.md` now has an acceptance matrix and quality gates. |
 | Backend/Agent event mismatch | Agent streams can add or rename event kinds while the UI still assumes old shapes. | `lib/agent/material-chat-schema.ts` and `test/lib/agent/material-chat-contract.test.ts` make the event contract executable. |
